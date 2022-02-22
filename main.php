@@ -46,7 +46,7 @@ if ( isset($_POST['submit']) ) {
 <head>
     <meta charset="UTF-8">
     <title>main</title>
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="CSS/main.css">
     <script src="https://kit.fontawesome.com/398a01c39a.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -66,7 +66,7 @@ if ( isset($_POST['submit']) ) {
         else {
             ?>
 
-            <img src="person.jpg" alt="" style="height: 90%; width: 90%">
+            <img src="picture/person.jpg" alt="" style="height: 90%; width: 90%">
             <?php
         }
         ?>

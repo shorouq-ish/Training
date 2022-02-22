@@ -38,7 +38,7 @@ if ( isset($_POST['submit']) ) {
 <head>
     <meta charset="UTF-8">
     <title>log in</title>
-    <link rel="stylesheet" href="signup.css">
+    <link rel="stylesheet" href="CSS/signup.css">
 </head>
 <body>
 <div class="center">

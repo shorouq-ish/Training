@@ -19,6 +19,7 @@ if ( $count >= 1) {
     $_SESSION['Email'] = $username;
     header('location: main.php');
 
+
 }
 
 }
@@ -31,7 +32,7 @@ if ( $count >= 1) {
 <head>
     <meta charset="UTF-8">
     <title>log in</title>
-    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="CSS/login.css">
 
 </head>
 <body>
