@@ -12,12 +12,16 @@ if(isset($_POST["submit"])){
 
     $query = "SELECT * FROM login WHERE Email='$username' AND password='$password'";
     $results = mysqli_query($db, $query);
-
+    $row = $results->fetch_assoc();
     $count = mysqli_num_rows($results);
     echo $count;
 if ( $count >= 1) {
     $_SESSION['Email'] = $username;
-    header('location: main.php');
+    $verified = $row['verified'];
+    if($verified){
+        header('location: main.php');
+    }
+
 
 
 }

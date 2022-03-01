@@ -1,12 +1,14 @@
 <?php
 session_start();
-
+$error = NULL;
 $db=new mysqli("localhost","root","","training");
 if(!$db){
     echo"DB connec faild";
 }
 $error ="";
 echo "shorouq";
+$s= "shorouq";
+
 if ( isset($_POST['submit']) ) {
 
     $FirstName =  $_POST['FirstName'];
@@ -14,14 +16,28 @@ if ( isset($_POST['submit']) ) {
     $email =  $_POST['Email'];
     $password_1 =  $_POST['password_1'];
     $password_2 =  $_POST['password_2'];
+    $_SESSION['Email']=$email;
 
-    if($password_1 == $password_2 && $FirstName!="" && $LastName!= "" && $email!="" && $password_1!=""){
-        $query = "Insert into login (FirstName,LastName, Email, Password)
-        VALUES ('$FirstName', '$LastName', '$email', '$password_1')";
+    $vkey = md5(time().$FirstName);
+
+
+    //mail("shorouq.ish99@gmail.com","Hi every one","Hello World");
+
+    if($password_1 == $password_2 && $FirstName!="" && $LastName!= "" && $email!="" && $password_1!="") {
+        $query = "Insert into login (FirstName,LastName, Email, Password,vkey)
+        VALUES ('$FirstName', '$LastName', '$email', '$password_1','$vkey')";
+
 
         mysqli_query($db, $query);
+        $to = $email;
+        $subject = "Email Verification";
+        $message = "<a href='http://localhost/Training/verify.php?vkey=$vkey'>Register account</a>";
 //        $user =mysqli_fetch_assoc($sql);
-        header('location: main.php');
+        $headers = "From: gradu.project199@gmail.com";
+        $headers .= "MIME_Version: 1.0" . "\r\n";
+        $headers .= "Content-type:text/html;chaset=UTF-8" . "\r\n";
+        mail($to, $subject, $message, $headers);
+
 
     }
     else {
@@ -37,7 +53,7 @@ if ( isset($_POST['submit']) ) {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>log in</title>
+    <title>Signup</title>
     <link rel="stylesheet" href="CSS/signup.css">
 </head>
 <body>
